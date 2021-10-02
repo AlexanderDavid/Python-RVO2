@@ -172,7 +172,7 @@ void setupScenario(RVO::RVOSimulator *sim)
 	roadmap.push_back(v);
 
 	/* Specify the default parameters for agents that are subsequently added. */
-	sim->setAgentDefaults(15.0f, 10, 5.0f, 5.0f, 2.0f, 2.0f);
+	sim->setAgentDefaults(15.0f, 10, 5.0f, 5.0f, 2.0f, 2.0f, 4.0f);
 
 	/*
 	 * Add agents, specifying their start position, and store goals on the

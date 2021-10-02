@@ -123,12 +123,14 @@ namespace RVO {
 		 *                             Must be non-negative.
 		 * \param      maxSpeed        The default maximum speed of a new agent.
 		 *                             Must be non-negative.
+		 * \param      maxAcell        The default maximum acceleration of a new agent.
+		 *                             Must be non-negative.
 		 * \param      velocity        The default initial two-dimensional linear
 		 *                             velocity of a new agent (optional).
 		 */
 		RVOSimulator(float timeStep, float neighborDist, size_t maxNeighbors,
 					 float timeHorizon, float timeHorizonObst, float radius,
-					 float maxSpeed, const Vector2 &velocity = Vector2());
+					 float maxSpeed, float maxAccel, const Vector2 &velocity = Vector2());
 
 		/**
 		 * \brief      Destroys this simulator instance.
@@ -182,13 +184,15 @@ namespace RVO {
 		 *                             Must be non-negative.
 		 * \param      maxSpeed        The maximum speed of this agent.
 		 *                             Must be non-negative.
+		 * \param      maxAccel        The maximum acceleration of this agent.
+		 *                             Must be non-negative.
 		 * \param      velocity        The initial two-dimensional linear velocity
 		 *                             of this agent (optional).
 		 * \return     The number of the agent.
 		 */
 		size_t addAgent(const Vector2 &position, float neighborDist,
 						size_t maxNeighbors, float timeHorizon,
-						float timeHorizonObst, float radius, float maxSpeed,
+						float timeHorizonObst, float radius, float maxSpeed, float maxAccel,
 						const Vector2 &velocity = Vector2());
 
 		/**
@@ -474,12 +478,14 @@ namespace RVO {
 		 *                             Must be non-negative.
 		 * \param      maxSpeed        The default maximum speed of a new agent.
 		 *                             Must be non-negative.
+		 * \param      maxAccel        The default maximum acceleration of a new agent.
+		 *                             Must be non-negative.
 		 * \param      velocity        The default initial two-dimensional linear
 		 *                             velocity of a new agent (optional).
 		 */
 		void setAgentDefaults(float neighborDist, size_t maxNeighbors,
 							  float timeHorizon, float timeHorizonObst,
-							  float radius, float maxSpeed,
+							  float radius, float maxSpeed, float maxAccel,
 							  const Vector2 &velocity = Vector2());
 
 		/**
@@ -498,6 +504,15 @@ namespace RVO {
 		 *                             non-negative.
 		 */
 		void setAgentMaxSpeed(size_t agentNo, float maxSpeed);
+
+		/**
+		 * \brief      Sets the maximum accel of a specified agent.
+		 * \param      agentNo         The number of the agent whose maximum speed
+		 *                             is to be modified.
+		 * \param      maxAccel        The replacement maximum accel. Must be
+		 *                             non-negative.
+		 */
+		void setAgentMaxAccel(size_t agentNo, float maxAccel);
 
 		/**
 		 * \brief      Sets the maximum neighbor distance of a specified agent.

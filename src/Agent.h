@@ -89,6 +89,7 @@ namespace RVO {
 		std::vector<std::pair<float, const Agent *> > agentNeighbors_;
 		size_t maxNeighbors_;
 		float maxSpeed_;
+		float maxAccel_;
 		float neighborDist_;
 		Vector2 newVelocity_;
 		std::vector<std::pair<float, const Obstacle *> > obstacleNeighbors_;

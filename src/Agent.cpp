@@ -405,7 +405,18 @@ namespace RVO {
 
 	void Agent::update()
 	{
-		velocity_ = newVelocity_;
+		/* Calculate the proposed change in velocity */
+		auto dv = abs(newVelocity_ - velocity_);
+
+		/* If it is less than the max then allow, if not then scale it using
+		 * linear interpolation */
+		if (dv < maxAccel_ * sim_->timeStep_) {
+			velocity_ = newVelocity_;
+		} else {
+			velocity_ = (1 - (maxAccel_ * sim_->timeStep_) / dv) * velocity_ +
+				((maxAccel_ * sim_->timeStep_) / dv) * newVelocity_;
+		}
+
 		position_ += velocity_ * sim_->timeStep_;
 	}
 
